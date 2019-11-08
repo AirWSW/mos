@@ -10,7 +10,7 @@ dataSegmentSelector(0, 64*1024*1024, 0x92)
     i[0] = (uint32_t)this;
     i[1] = sizeof(GlobalDescriptorTable) << 16;
 
-    asm volatile("lgdt (%0)": :"p" (((uint8_t*) i) +2));
+    __asm__ volatile("lgdt (%0)": :"p" (((uint8_t*) i) +2));
 }
 
 GlobalDescriptorTable::~GlobalDescriptorTable()
